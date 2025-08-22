@@ -219,7 +219,7 @@ func (c *Server) setupCommandQueue(logger log.Logger) error {
 		// mdmService = device.UDIDCertAuthMiddleware(devDB, udidauthLogger, c.UDIDCertAuthWarnOnly)(mdmService)
 
 		// verifycertLogger := log.With(logger, "component", "verifycert")
-		// mdmService = VerifyCertificateMiddleware(c.ValidateSCEPIssuer, c.ValidateSCEPExpiration, c.SCEPDepot, verifycertLogger)(mdmService)
+		mdmService = VerifyCertificateMiddleware(c.ValidateSCEPIssuer, c.ValidateSCEPExpiration, c.SCEPDepot, verifycertLogger)(mdmService)
 	}
 	c.MDMService = mdmService
 
